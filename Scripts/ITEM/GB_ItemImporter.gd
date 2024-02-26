@@ -1,10 +1,10 @@
-extends Node
+extends GDScript
 
 class_name ItemImporter
 
 ## Usage example
 func _ready():
-	var items = import_items_from_json("res://GodotUI-Scripts-Library/Scripts/Test_Items.JSON")
+	var items = import_items_from_json("res://GodotUI-Scripts-Library/Scripts/ITEM/Test_Items.JSON")
 	for item in items:
 		print("Imported Item:", item.get_name(), "Description:", item.get_description(), "Type:", item.get_item_type())
 #        match item:
@@ -19,7 +19,7 @@ func _ready():
 
 
 # Import ItemType from Item script
-const ItemType = preload('res://GodotUI-Scripts-Library/Scripts/Item_Base.gd').ItemType
+const ItemType = preload('res://GodotUI-Scripts-Library/Scripts/ITEM/Item_Base.gd').ItemType
 
 
 # Singleton instance

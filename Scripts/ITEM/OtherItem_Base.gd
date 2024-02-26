@@ -1,4 +1,4 @@
-extends 'res://GodotUI-Scripts-Library/Scripts/Item_Base.gd'
+extends 'res://GodotUI-Scripts-Library/Scripts/ITEM/Item_Base.gd'
 
 class_name OtherItem
 

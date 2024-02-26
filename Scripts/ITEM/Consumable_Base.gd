@@ -1,4 +1,4 @@
-extends 'res://GodotUI-Scripts-Library/Scripts/Item_Base.gd'
+extends 'res://GodotUI-Scripts-Library/Scripts/ITEM/Item_Base.gd'
 
 class_name Consumable
 
@@ -19,26 +19,26 @@ class_name Consumable
 
 # Consumable properties (in addition to Item properties)
 var effect: String
-var value: int  # Could represent healing amount, mana restored, etc.
+var healing_amount: int  # Could represent healing amount, mana restored, etc.
 
 # Constructor
-func _init(name: String, description: String, icon: Texture, item_type: ItemType, effect: String, value: int):
+func _init(name: String, description: String, icon: Texture, item_type: ItemType, effect: String, healing_amount: int):
 	super._init(name, description, icon, item_type)
 	self.effect = effect
-	self.value = value
+	self.healing_amount = healing_amount
 
 # Getter for effect
 func get_effect() -> String:
 	return effect
 
-# Getter for value
-func get_value() -> int:
-	return value
+# Getter for healing amount
+func get_healing_amount() -> int:
+	return healing_amount
 
 # Setter for effect
 func set_effect(new_effect: String):
 	effect = new_effect
 
-# Setter for value
-func set_value(new_value: int):
-	value = new_value
+# Setter for healing amount
+func set_healing_amount(new_healing_amount: int):
+	healing_amount = new_healing_amount

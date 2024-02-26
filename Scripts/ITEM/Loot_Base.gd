@@ -1,4 +1,4 @@
-extends 'res://GodotUI-Scripts-Library/Scripts/Item_Base.gd'
+extends 'res://GodotUI-Scripts-Library/Scripts/ITEM/Item_Base.gd'
 
 class_name Loot
 
@@ -19,7 +19,6 @@ class_name Loot
 #goldCoin.set_weight(0.05)
 
 # Loot properties (in addition to Item properties)
-var value: int
 var weight: float
 
 # Constructor
@@ -28,17 +27,9 @@ func _init(name: String, description: String, icon: Texture, item_type: ItemType
 	self.value = value
 	self.weight = weight
 
-# Getter for value
-func get_value() -> int:
-	return value
-
 # Getter for weight
 func get_weight() -> float:
 	return weight
-
-# Setter for value
-func set_value(new_value: int):
-	value = new_value
 
 # Setter for weight
 func set_weight(new_weight: float):

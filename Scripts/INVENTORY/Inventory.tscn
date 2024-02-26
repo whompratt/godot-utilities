@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://venrdihug0d2"]
+
+[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/INVENTORY/PlayerInventory_Base.gd" id="1_u756n"]
+
+[node name="Inventory" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(9.04, 8.48)
+script = ExtResource("1_u756n")
+
+[node name="PlayerInventory" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 922.0
+offset_bottom = 645.0
+script = ExtResource("1_u756n")
+
+[node name="GridContainer" type="GridContainer" parent="PlayerInventory"]
+layout_mode = 0
+offset_right = 697.0
+offset_bottom = 264.0
