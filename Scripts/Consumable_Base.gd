@@ -1,4 +1,4 @@
-extends 'res://scripts/Item.gd'
+extends 'res://GodotUI-Scripts-Library/Scripts/Item_Base.gd'
 
 class_name Consumable
 
