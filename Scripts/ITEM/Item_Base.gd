@@ -14,14 +14,14 @@ enum ItemType {
 # Properties
 var name: String = ""
 var description: String = ""
-var icon: Texture
+var icon: Texture2D
 var item_type: ItemType
 var value: int  # Value of the item
 var stack_size: int  # Maximum stack size for the item
 var stack_count: int  # Current number of items in the stack
 
 # Constructor
-func _init(name: String, description: String, icon: Texture, item_type: ItemType, value: int = 0, stack_size: int = 1):
+func _init(name: String, description: String, icon: Texture2D, item_type: ItemType, value: int = 0, stack_size: int = 1):
 	self.name = name
 	self.description = description
 	self.icon = icon
@@ -85,3 +85,13 @@ func decrease_stack_count(amount: int):
 	stack_count -= amount
 	if stack_count < 0:
 		stack_count = 0
+
+# Function to create a drag preview for the item
+func create_drag_preview() -> Control:
+	var drag_preview = Control.new()
+	drag_preview.rect_size = Vector2(64, 64)  # Size of the drag preview
+	var icon_sprite = Sprite2D.new()
+	icon_sprite.texture = icon
+	icon_sprite.rect_size = Vector2(64, 64)  # Size of the icon
+	drag_preview.add_child(icon_sprite)
+	return drag_preview

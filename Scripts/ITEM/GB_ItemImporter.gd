@@ -3,10 +3,10 @@ extends GDScript
 class_name ItemImporter
 
 ## Usage example
-func _ready():
-	var items = import_items_from_json("res://GodotUI-Scripts-Library/Scripts/ITEM/Test_Items.JSON")
-	for item in items:
-		print("Imported Item:", item.get_name(), "Description:", item.get_description(), "Type:", item.get_item_type())
+#func _ready():
+#	var items = import_items_from_json("res://GodotUI-Scripts-Library/Scripts/ITEM/Test_Items.JSON")
+#	for item in items:
+#		print("Imported Item:", item.get_name(), "Description:", item.get_description(), "Type:", item.get_item_type())
 #        match item:
 #             is Weapon:
 #                print("Damage:", item.get_damage(), "Attack Speed:", item.get_attack_speed())
