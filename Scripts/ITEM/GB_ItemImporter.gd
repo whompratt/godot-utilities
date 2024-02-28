@@ -1,4 +1,4 @@
-extends GDScript
+extends Node
 
 class_name ItemImporter
 

@@ -1,82 +1,73 @@
-extends Control
+extends Object
 
 class_name Inventory
 
-const GRID_COLS = 4
-const GRID_ROWS = 4
+# Constants
+const GRID_COLS: int = 5  # Number of columns in the grid
 
-var items: Array = []
+# Properties
+var size: Vector2 = Vector2(GRID_COLS, 2)  # Size of the inventory grid
+var items: Array
 var inventoryGrid: GridContainer
+
+# Signals
 signal item_added(item: Item, slotIndex: int)
 signal item_removed(item: Item, slotIndex: int)
 
 # Constructor
-func _init(inventory_grid: GridContainer):
-	inventoryGrid = inventory_grid
+func _init():
+	items = []
 
+# Initialize the inventory with a GridContainer
+func initialize_inventory(grid: GridContainer):
+	inventoryGrid = grid
+	for i in range(size.x * size.y):
+		var slot = inventoryGrid.get_child(i)
+		slot.connect("item_added", Callable(self, "_on_slot_item_added"))
+		slot.connect("item_removed", Callable(self, "_on_slot_item_removed"))
+
+# Add an item to the inventory
 func add_item(item: Item, slotIndex: int) -> bool:
-	if slotIndex < 0 or slotIndex >= GRID_COLS * GRID_ROWS:
-		return false
-
 	if items.size() <= slotIndex:
-		items.resize(slotIndex + 1)  # Resize and initialize with nulls
-
+		items.resize(slotIndex + 1)
+	
 	if items[slotIndex] == null:
 		items[slotIndex] = item
 		emit_signal("item_added", item, slotIndex)
 		return true
-	else:
-		return false
+	
+	return false
 
-func remove_item(slotIndex: int) -> bool:
-	if slotIndex < 0 or slotIndex >= GRID_COLS * GRID_ROWS:
-		return false
-
+# Remove an item from the inventory
+func remove_item(slotIndex: int) -> Item:
 	if items.size() > slotIndex and items[slotIndex] != null:
-		var removed_item = items[slotIndex]
+		var item = items[slotIndex]
 		items[slotIndex] = null
-		emit_signal("item_removed", removed_item, slotIndex)
-		return true
-	else:
-		return false
+		emit_signal("item_removed", item, slotIndex)
+		return item
+	
+	return null
 
-func is_slot_empty(slotIndex: int) -> bool:
-	if slotIndex < 0 or slotIndex >= GRID_COLS * GRID_ROWS:
-		return false
-
-	return items.size() <= slotIndex or items[slotIndex] == null
-
-func get_item_in_slot(slotIndex: int) -> Item:
-	if slotIndex < 0 or slotIndex >= GRID_COLS * GRID_ROWS:
-		return null
-
+# Get the item at a specific slot
+func get_item_at_slot(slotIndex: int) -> Item:
 	if items.size() > slotIndex:
 		return items[slotIndex]
-	else:
-		return null
+	
+	return null
 
-func move_item(fromSlotIndex: int, toSlotIndex: int) -> bool:
-	if fromSlotIndex < 0 or fromSlotIndex >= GRID_COLS * GRID_ROWS:
-		return false
-
-	if toSlotIndex < 0 or toSlotIndex >= GRID_COLS * GRID_ROWS:
-		return false
-
-	if items.size() > fromSlotIndex and items[fromSlotIndex] != null:
-		var item = items[fromSlotIndex]
-		items[fromSlotIndex] = null
-		items[toSlotIndex] = item
-		return true
-	else:
-		return false
-
-# Updated function to update inventory UI
-func update_inventory_ui(grid: GridContainer):
-	grid.queue_free()
-
-	for slotIndex in range(GRID_COLS * GRID_ROWS):
-		var item = get_item_in_slot(slotIndex)
+# Function to print inventory contents
+func print_inventory_contents():
+	for i in range(items.size()):
+		var item = items[i]
 		if item != null:
-			var slot = Slot.new()
-			slot.set_item(item)  # Set the item in the slot
-			grid.add_child(slot)
+			print("Slot", i, ":", item.get_name(), "Quantity:", item.get_stack_count())
+		else:
+			print("Slot", i, ": Empty")
+
+# Handle item added to a slot
+func _on_slot_item_added(slotIndex: int, item: Item):
+	add_item(item, slotIndex)
+
+# Handle item removed from a slot
+func _on_slot_item_removed(slotIndex: int, item: Item):
+	remove_item(slotIndex)

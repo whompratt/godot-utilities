@@ -1,4 +1,4 @@
-extends Object
+extends Control
 
 class_name Item
 
@@ -12,7 +12,7 @@ enum ItemType {
 }
 
 # Properties
-var name: String = ""
+var _name: String = ""
 var description: String = ""
 var icon: Texture2D
 var item_type: ItemType
@@ -22,7 +22,7 @@ var stack_count: int  # Current number of items in the stack
 
 # Constructor
 func _init(name: String, description: String, icon: Texture2D, item_type: ItemType, value: int = 0, stack_size: int = 1):
-	self.name = name
+	_name = name
 	self.description = description
 	self.icon = icon
 	self.item_type = item_type
@@ -31,13 +31,13 @@ func _init(name: String, description: String, icon: Texture2D, item_type: ItemTy
 	self.stack_count = 1
 
 # Getters
-func get_name() -> String:
-	return name
+func get_item_name() -> String:
+	return _name
 
 func get_description() -> String:
 	return description
 
-func get_icon() -> Texture:
+func get_icon() -> Texture2D:
 	return icon
 
 func get_item_type() -> ItemType:
@@ -53,13 +53,13 @@ func get_stack_count() -> int:
 	return stack_count
 
 # Setters
-func set_name(new_name: String):
-	name = new_name
+func set_item_name(new_name: String):
+	_name = new_name
 
 func set_description(new_description: String):
 	description = new_description
 
-func set_icon(new_icon: Texture):
+func set_icon(new_icon: Texture2D):
 	icon = new_icon
 
 func set_item_type(new_type: ItemType):
@@ -90,7 +90,7 @@ func decrease_stack_count(amount: int):
 func create_drag_preview() -> Control:
 	var drag_preview = Control.new()
 	drag_preview.rect_size = Vector2(64, 64)  # Size of the drag preview
-	var icon_sprite = Sprite2D.new()
+	var icon_sprite = TextureRect.new()
 	icon_sprite.texture = icon
 	icon_sprite.rect_size = Vector2(64, 64)  # Size of the icon
 	drag_preview.add_child(icon_sprite)

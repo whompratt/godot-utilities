@@ -1,18 +1,18 @@
 extends Control
 
-var item: Item
-
+@export var itemIcon: TextureRect
+@export var itemName:Label
+@export var itemQuant:Label
+const Item = preload("res://GodotUI-Scripts-Library/Scripts/ITEM/Item_Base.gd")
 # Reference to UI elements
-var itemIcon: TextureRect
-var itemName: Label
-var itemQuant: Label
+
+var item: Item = null
 
 func _ready():
 	# Get references to UI elements
-	itemIcon = $ItemIcon
-	itemName = $ItemName
-	itemQuant = $ItemQuant
-
+	assert(itemIcon, "An itemIcon must be set.")
+	assert(itemName, "An itemName must be set.")
+	assert(itemQuant, "An itemQuant must be set.")
 	# Update UI with item data
 	update_item_ui()
 

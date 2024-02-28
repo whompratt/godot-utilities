@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5i2eydboluts"]
+
+[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/INVENTORY/PlayerInventory_Base.gd" id="1_j611t"]
+[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/INVENTORY/Inventory_Base.gd" id="2_tm6iu"]
+[ext_resource type="PackedScene" uid="uid://bat4pvan50s1q" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot.tscn" id="3_v02ed"]
+
+[node name="PlayerInventory" type="Node"]
+script = ExtResource("1_j611t")
+
+[node name="PlayerInventory" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+script = ExtResource("2_tm6iu")
+
+[node name="WeaponSlot" parent="PlayerInventory" instance=ExtResource("3_v02ed")]
+layout_mode = 2
+
+[node name="ArmourSlot" parent="PlayerInventory" instance=ExtResource("3_v02ed")]
+layout_mode = 2

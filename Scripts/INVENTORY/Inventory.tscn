@@ -1,21 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://venrdihug0d2"]
+[gd_scene load_steps=3 format=3 uid="uid://venrdihug0d2"]
 
-[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/INVENTORY/PlayerInventory_Base.gd" id="1_u756n"]
+[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/INVENTORY/Inventory_Base.gd" id="1_bvyfj"]
+[ext_resource type="PackedScene" uid="uid://bat4pvan50s1q" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot.tscn" id="2_j3c5c"]
 
-[node name="Inventory" type="Control"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 3
-anchors_preset = 0
-scale = Vector2(9.04, 8.48)
-script = ExtResource("1_u756n")
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_bvyfj")
 
-[node name="PlayerInventory" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 922.0
-offset_bottom = 645.0
-script = ExtResource("1_u756n")
+[node name="inventoryGrid" type="GridContainer" parent="."]
+offset_left = -1.0
+offset_right = 74.0
+offset_bottom = 75.0
+columns = 5
 
-[node name="GridContainer" type="GridContainer" parent="PlayerInventory"]
-layout_mode = 0
-offset_right = 697.0
-offset_bottom = 264.0
+[node name="Slot" parent="inventoryGrid" instance=ExtResource("2_j3c5c")]
+layout_mode = 2
+
+[node name="Slot2" parent="inventoryGrid" instance=ExtResource("2_j3c5c")]
+layout_mode = 2
+
+[node name="Slot3" parent="inventoryGrid" instance=ExtResource("2_j3c5c")]
+layout_mode = 2
+
+[node name="Slot4" parent="inventoryGrid" instance=ExtResource("2_j3c5c")]
+layout_mode = 2

@@ -1,37 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bat4pvan50s1q"]
+[gd_scene load_steps=2 format=3 uid="uid://bat4pvan50s1q"]
 
-[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot_Base.gd" id="1_1y0gk"]
-[ext_resource type="Texture2D" uid="uid://csdrc25bsema3" path="res://Dragonbun-ItemBorder1.png" id="2_newtf"]
+[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot_Base.gd" id="1_81301"]
 
-[node name="Slot" type="Panel"]
+[node name="Slot" type="Control"]
 custom_minimum_size = Vector2(75, 75)
-script = ExtResource("1_1y0gk")
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_81301")
 
-[node name="ItemIcon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -87.5
-offset_top = -87.5
-offset_right = 122.5
-offset_bottom = 122.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_newtf")
-
-[node name="ItemQuantity" type="Label" parent="."]
+[node name="ItemDisplay" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 2.0
-offset_right = 91.0
-offset_bottom = 25.0
-text = "99"
-
-[node name="ItemName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 51.0
-offset_right = 42.0
-offset_bottom = 74.0
-text = "1"
+offset_right = 40.0
+offset_bottom = 40.0

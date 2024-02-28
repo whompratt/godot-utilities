@@ -4,21 +4,26 @@ class_name PlayerInventory
 
 var weapon_slot: Item = null
 var armor_slot: Item = null
-var PlayerinventoryGrid: GridContainer
+
+# Constants
+const WEAPON_SLOT_INDEX: int = 0
+const ARMOR_SLOT_INDEX: int = 1
 
 # Constructor
-func _init(inventory_grid: GridContainer):
-	PlayerinventoryGrid = inventory_grid
-	connect("item_added", Callable(self, "_on_item_added"))
-	connect("item_removed", Callable(self, "_on_item_removed"))
+func _init():
+	pass
 
 # Equip a weapon
 func equip_weapon(weapon: Item):
-	weapon_slot = weapon
+	if weapon.get_item_type() == Item.ItemType.WEAPON:
+		weapon_slot = weapon
+		emit_signal("item_added", weapon, WEAPON_SLOT_INDEX)
 
 # Equip armor
 func equip_armor(armor: Item):
-	armor_slot = armor
+	if armor.get_item_type() == Item.ItemType.ARMOR:
+		armor_slot = armor
+		emit_signal("item_added", armor, ARMOR_SLOT_INDEX)
 
 # Get equipped weapon
 func get_equipped_weapon() -> Item:
@@ -30,15 +35,26 @@ func get_equipped_armor() -> Item:
 
 # Override add_item to handle equipment slots
 func add_item(item: Item, slotIndex: int) -> bool:
-	if item.get_item_type() == Item.ItemType.WEAPON:
-		if weapon_slot == null:
-			weapon_slot = item
-			emit_signal("item_added", item, slotIndex)
-			return true
-	elif item.get_item_type() == Item.ItemType.ARMOR:
-		if armor_slot == null:
-			armor_slot = item
-			emit_signal("item_added", item, slotIndex)
-			return true
+	if slotIndex == WEAPON_SLOT_INDEX:
+		equip_weapon(item)
+		return true
+	elif slotIndex == ARMOR_SLOT_INDEX:
+		equip_armor(item)
+		return true
+	else:
+		return super.add_item(item, slotIndex)
 
-	return super.add_item(item, slotIndex)
+# Remove an item from the inventory
+func remove_item(slotIndex: int) -> Item:
+	if slotIndex == WEAPON_SLOT_INDEX:
+		var weapon = weapon_slot
+		weapon_slot = null
+		emit_signal("item_removed", weapon, WEAPON_SLOT_INDEX)
+		return weapon
+	elif slotIndex == ARMOR_SLOT_INDEX:
+		var armor = armor_slot
+		armor_slot = null
+		emit_signal("item_removed", armor, ARMOR_SLOT_INDEX)
+		return armor
+	else:
+		return super.remove_item(slotIndex)
