@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot_Base.gd" id="1_81301"]
 
-[node name="Slot" type="Control"]
+[node name="Control" type="Control"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_81301")
-
-[node name="ItemDisplay" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0

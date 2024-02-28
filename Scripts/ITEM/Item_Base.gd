@@ -1,5 +1,3 @@
-extends Control
-
 class_name Item
 
 # Enum for item types
@@ -28,7 +26,7 @@ func _init(name: String, description: String, icon: Texture2D, item_type: ItemTy
 	self.item_type = item_type
 	self.value = value
 	self.stack_size = stack_size
-	self.stack_count = 1
+
 
 # Getters
 func get_item_name() -> String:
@@ -49,8 +47,6 @@ func get_value() -> int:
 func get_stack_size() -> int:
 	return stack_size
 
-func get_stack_count() -> int:
-	return stack_count
 
 # Setters
 func set_item_name(new_name: String):
@@ -71,8 +67,6 @@ func set_value(new_value: int):
 func set_stack_size(new_size: int):
 	stack_size = new_size
 
-func set_stack_count(new_count: int):
-	stack_count = new_count
 
 # Function to increase stack count
 func increase_stack_count(amount: int):
