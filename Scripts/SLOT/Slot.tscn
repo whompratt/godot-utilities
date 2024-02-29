@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot_Base.gd" id="1_81301"]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 3
 anchors_preset = 0
