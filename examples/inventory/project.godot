@@ -13,9 +13,8 @@ config_version=5
 config/name="Example: Inventory"
 config/description="A example scene demonstrating how to implement the Inventory node."
 config/version="0.1"
-run/main_scene="res://example_inventory.tscn"
 config/features=PackedStringArray("4.2")
 
-[autoload]
+[debug]
 
-ItemDefinitions="*res://ItemDefinitions.gd"
+gdscript/warnings/integer_division=0

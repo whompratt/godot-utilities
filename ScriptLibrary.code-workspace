@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "name": "Example: Inventory",
+      "path": "examples/inventory"
+    },
+    {
+      "name": "Utility Scripts",
+      "path": "Scripts"
+    }
+  ]
+}
