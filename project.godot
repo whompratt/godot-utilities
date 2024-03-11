@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Example: Inventory"
-config/description="A example scene demonstrating how to implement the Inventory node."
+config/name="Crab Creations Plugins"
+config/description="A series of plugins for Godot to accelerate game development"
 config/version="0.1"
 config/features=PackedStringArray("4.2")
 
