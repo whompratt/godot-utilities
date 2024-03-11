@@ -2,9 +2,6 @@
 class_name Protoset extends Resource
 
 #region Constants
-## KEY_ID marks the value used to uniquely identity a given prototype.
-## This value must be distinct within the protoset, and the string in
-## KEY_ID can be changed to anoter value if required.
 const KEY_ID: String = "id"
 #endregion
 
@@ -18,6 +15,17 @@ const KEY_ID: String = "id"
 				_validate_json(json_data)
 			_update_prototypes(json_data)
 		_save()
+
+@export var debug_prototypes: bool:
+	get:
+		return false
+	set(_new):
+		debug_prototypes = false
+		print("Prototype count: %s" % len(_prototypes))
+		for prototype in _prototypes:
+			print("-- %s --" % prototype)
+			print("%s" % _prototypes[prototype])
+			print("\n")
 #endregion
 
 
