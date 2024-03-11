@@ -8,5 +8,8 @@
       "name": "Utility Scripts",
       "path": "Scripts"
     }
-  ]
+  ],
+  "settings": {
+    "godotTools.editorPath.godot4": "e:\\Godot\\Godot.exe"
+  }
 }
