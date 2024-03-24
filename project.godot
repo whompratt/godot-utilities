@@ -18,3 +18,7 @@ config/features=PackedStringArray("4.2")
 [debug]
 
 gdscript/warnings/integer_division=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ginv/plugin.cfg")

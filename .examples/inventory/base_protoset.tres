@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Protoset" load_steps=3 format=3 uid="uid://c1wxy75tuub1k"]
-
-[ext_resource type="JSON" path="res://item_definitions.json" id="1_uvjgw"]
-[ext_resource type="Script" path="res://protoset.gd" id="2_ux58x"]
-
-[resource]
-script = ExtResource("2_ux58x")
-json_data = ExtResource("1_uvjgw")
-debug_prototypes = false

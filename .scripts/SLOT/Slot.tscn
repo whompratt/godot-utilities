@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bat4pvan50s1q"]
-
-[ext_resource type="Script" path="res://GodotUI-Scripts-Library/Scripts/SLOT/Slot_Base.gd" id="1_81301"]
-
-[node name="Control2" type="Control"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_81301")

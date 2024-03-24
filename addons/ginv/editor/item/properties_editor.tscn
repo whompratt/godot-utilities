@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkii4ebeb88wa"]
+
+[ext_resource type="Script" path="res://addons/ginv/editor/item/properties_editor.gd" id="1_inlgc"]
+[ext_resource type="PackedScene" uid="uid://cqynjpc16xksw" path="res://addons/ginv/editor/common/dict_editor.tscn" id="2_4gdgo"]
+
+[node name="PropertiesEditor" type="Window"]
+title = "Edit Item Properties"
+position = Vector2i(0, 36)
+size = Vector2i(800, 300)
+visible = false
+exclusive = true
+min_size = Vector2i(400, 200)
+script = ExtResource("1_inlgc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DictEditor" parent="MarginContainer" instance=ExtResource("2_4gdgo")]
+layout_mode = 2
