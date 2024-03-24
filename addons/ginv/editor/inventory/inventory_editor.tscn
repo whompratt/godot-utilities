@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx8m02qito6op"]
+
+[ext_resource type="Script" path="res://addons/ginv/editor/inventory/inventory_editor.gd" id="1_xfuhs"]
+[ext_resource type="PackedScene" uid="uid://b51uc67hlordk" path="res://addons/ginv/editor/common/choice_filter.tscn" id="2_lbuv1"]
+
+[node name="InventoryEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xfuhs")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChoiceFilter" parent="HSplitContainer" instance=ExtResource("2_lbuv1")]
+layout_mode = 2
+pick_text = "Add"
+filter_text = "Filter Prototypes:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonEdit" type="Button" parent="HSplitContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit"
+
+[node name="ButtonRemove" type="Button" parent="HSplitContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
